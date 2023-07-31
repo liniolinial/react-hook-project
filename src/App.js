@@ -1,5 +1,4 @@
-// import logo from "./logo.svg";
-import React, { Component } from "react";
+import React from "react";
 import TodoApp from "./components/TodoApp/TodoApp";
 
 import "./App.scss";
