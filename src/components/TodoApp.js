@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import TodoList from "../TodoList/TodoList";
-import TodoForm from "../TodoForm/TodoForm";
-import useTodoState from "../hooks/useTodoState";
-import useLocalStorageState from "../hooks/useLocalStorageState";
+import TodoList from "./TodoList";
+import TodoForm from "./TodoForm";
+import useTodoState from "./hooks/useTodoState";
+import useLocalStorageState from "./hooks/useLocalStorageState";
 
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";

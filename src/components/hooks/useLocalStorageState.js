@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-// defaultVal = when the key dosen't exist, defaultVal would be shown
+// defaultVal = when the key dosen't exist, defaultVal will shown
 export default function useLocalStorageState(key, defaultVal) {
   // make piece of state, based off of value in localstorage (or default)
-  // this one would be an generic hook, not like input/ Todo/ toggle State etc(not commit)
+  // this one would be an generic hook, not like input/ Todo/ toggle State etc(don't have to commit a initialVal)
   const [state, setState] = useState(() => {
     let val;
     // when try dosen't work,
@@ -13,7 +13,7 @@ export default function useLocalStorageState(key, defaultVal) {
       // then catch returns the defaultVal, whatever the user gives
       val = defaultVal;
     }
-    // but the return should be in this block<
+    // but the return should be in this block
     return val;
   });
 

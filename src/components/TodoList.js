@@ -2,7 +2,7 @@ import React from "react";
 import Paper from "@mui/material/Paper";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
-import TodoItem from "../TodoItem/TodoItem";
+import TodoItem from "./TodoItem";
 
 // add the props (these are written in Parent Component as a function) as a argument in function
 // = Destructuring Props

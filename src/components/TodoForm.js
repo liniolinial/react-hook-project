@@ -1,7 +1,7 @@
 import React from "react";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
-import useInputState from "../hooks/useInputState";
+import useInputState from "./hooks/useInputState";
 
 // props -> {addTodo}: props Destructuring
 export default function TodoForm({ addTodo }) {

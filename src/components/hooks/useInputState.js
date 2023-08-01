@@ -11,5 +11,6 @@ export default function useInputState(initialVal = "") {
     setValue("");
   };
 
+  // one of them must be mandatory
   return [value, handleChange, reset];
 }
