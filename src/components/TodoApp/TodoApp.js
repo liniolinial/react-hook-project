@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import TodoList from "../TodoList/TodoList";
 import TodoForm from "../TodoForm/TodoForm";
 import useTodoState from "../hooks/useTodoState";
+import useLocalStorageState from "../hooks/useLocalStorageState";
 
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
@@ -10,18 +11,18 @@ import Toolbar from "@mui/material/Toolbar";
 import Grid from "@mui/material/Grid";
 
 export default function TodoApp() {
-  // instead of hardcoding
-  const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+  // instead of hardcoding id=x , task:y in obj
+  // in hook > useLocalStorageState hook
+  // const initialTodos = JSON.parse(window.localStorage.getItem("todos") || "[]");
+
+  const initialTodos = [{ id: 1, task: "initial task", completed: false }];
 
   // extract out using Destructuring, all the things that I need
   const { todos, addTodo, removeTodo, toggleTodo, editTodo } =
     useTodoState(initialTodos);
 
-  // const initialTodos = [
-  //   { id: 1, task: "Clean Fishtank", completed: false },
-  //   { id: 2, task: "Wash Car", completed: true },
-  //   { id: 3, task: "Grow Beard", completed: false },
-  // ];
+  // testing the useLocalStorageState with console.log
+  const [mood, setMood] = useLocalStorageState("mood", "happy");
 
   // Here lists every single functions/methods that would be passed by the child component, but moved in useTodoState (Hook)
 
@@ -31,10 +32,12 @@ export default function TodoApp() {
   // // setter function: set/ change the Value
   // const [todos, setTodos] = useState(initialTodos);
 
-  useEffect(() => {
-    window.localStorage.setItem("todos", JSON.stringify(todos));
-    // optional Condition: update, when todos changes
-  }, [todos]);
+  // // // useEffect could also in hook
+  // useEffect(() => {
+  //   window.localStorage.setItem("todos", JSON.stringify(todos));
+  //   // optional Condition: update, when todos changes
+  // }, [todos]);
+  // // //
 
   // // display the input Task in TodoForm
   // const addTodo = (newTodoText) => {

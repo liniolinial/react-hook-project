@@ -1,8 +1,9 @@
-import { useState } from "react";
+import useLocalStorageState from "./useLocalStorageState";
 import { v4 as uuidv4 } from "uuid";
 
 export default function useTodoState(initialTodos) {
-  const [todos, setTodos] = useState(initialTodos);
+  // key, defaultVal in useLocalStorageState
+  const [todos, setTodos] = useLocalStorageState("todos", initialTodos);
 
   return {
     // return objects with state references
@@ -13,6 +14,7 @@ export default function useTodoState(initialTodos) {
         { id: uuidv4(), task: newTodoText, completed: false },
       ]);
     },
+
     removeTodo: (todoId) => {
       const updatedTodos = todos.filter((todo) => todo.id !== todoId);
       setTodos(updatedTodos);
@@ -24,6 +26,7 @@ export default function useTodoState(initialTodos) {
       );
       setTodos(updatedTodos);
     },
+
     editTodo: (todoId, newTask) => {
       const updatedTodos = todos.map((todo) =>
         todo.id === todoId ? { ...todo, task: newTask } : todo,
