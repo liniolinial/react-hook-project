@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import EditTodoForm from "./EditTodoForm";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -8,22 +8,28 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import useToggleState from "./hooks/useToggleState";
+import { TodosContext } from "./context/todos.context";
 
 export default function TodoItem({
   id,
   task,
   completed,
-  removeTodo,
-  toggleTodo,
-  editTodo,
+  // TodosContext replace these
+  // removeTodo,
+  // toggleTodo,
+  // editTodo,
 }) {
+  // transfer the props, that will be used in Child Component
+  const { removeTodo, toggleTodo } = useContext(TodosContext);
+  // editTodo:  without props transferring, use directly with useContext
   const [isEditing, toggle] = useToggleState(false);
 
   return (
     <ListItem style={{ height: "64px", margin: "0" }}>
       {isEditing ? (
         <EditTodoForm
-          editTodo={editTodo}
+          // editTodo in EditTodoForm.js
+          // editTodo={editTodo}
           id={id}
           task={task}
           toggleEditForm={toggle}
@@ -43,7 +49,6 @@ export default function TodoItem({
             <IconButton aria-label='Delete' onClick={() => removeTodo(id)}>
               <DeleteIcon />
             </IconButton>
-            {/* this toggle is not related to the toggleTodo(= checkbox and line-through) but the useToggleState */}
             <IconButton aria-label='Edit' onClick={toggle}>
               <EditIcon />
             </IconButton>

@@ -1,21 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import TextField from "@mui/material/TextField";
 import useInputState from "./hooks/useInputState";
+import { TodosContext } from "./context/todos.context";
 
-// props Destructuring
-export default function EditTodoForm({ id, task, editTodo, toggleEditForm }) {
-  // useInputState(initialVal) -> replaced by task
-  // initially, the task will shown
+export default function EditTodoForm({ id, task, toggleEditForm }) {
   const [value, handleChange, reset] = useInputState(task);
-
+  const { editTodo } = useContext(TodosContext);
+  console.log("EDIT FORM RENDER!!");
   return (
     <form
       onSubmit={(e) => {
-        // these are the hooks
         e.preventDefault();
         editTodo(id, value);
         reset();
-        // just a parameter from EditTodoForm function
         toggleEditForm();
       }}
       style={{ marginLeft: "1rem", width: "50%" }}>
